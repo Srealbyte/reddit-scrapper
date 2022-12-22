@@ -16,7 +16,6 @@ reddit = praw.Reddit(username="No-Professional-8030",
 )
 subreddit_name="buildapcsales"
 subreddit = reddit.subreddit(subreddit_name)
-#print(subreddit.display_name)
 
 hot_subreddit=subreddit.hot()
 
@@ -33,9 +32,6 @@ for submission in subreddit.hot():
     type=result.group(1)
     item=result.group(2).lstrip()
     price=result.group(3)
-#     print(type)
-#     print(item)
-#     print(price)
     post.append([submission.id,type,item,price,submission.score,submission.url,submission.created])
 
 post = pd.DataFrame(post,columns=['id','Type','Item','Price','score','url','Time Created'])
@@ -65,7 +61,7 @@ def sentiment_scores(sentence):
     
     
 def get_date_time(x):
-    return datetime.fromtimestamp(x)#.strftime('%Y-%m-%d')
+    return datetime.fromtimestamp(x)
 
 def get_post_hours(x):
     return (time.time() - x)/3600
@@ -100,7 +96,9 @@ item = input("What type of sale item are they looking for: ")
 post_filtered = post[post['LikesPerHour']>=n]
 
 post_filtered = post_filtered[post_filtered['Type'].apply(lambda name: search_item(name))]
-print(post)
-post_filtered.to_csv('post.csv',index=False) # use this post.csv to load into google sheet
+#print(post)
+print(post_filtered)
+
+post_filtered.to_csv('post.csv',index=False)
 
 
