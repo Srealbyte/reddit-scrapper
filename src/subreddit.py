@@ -6,6 +6,9 @@ import re
 import time
 from tqdm import tqdm
 tqdm.pandas()
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+nltk.download('vader_lexicon')
 
 user_agent="agent01"
 reddit = praw.Reddit(username="No-Professional-8030",
@@ -72,9 +75,6 @@ def search_item(x):
 
 post['Comment'] = post['id'].progress_apply(lambda x: get_comments(x))
 
-import nltk
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-nltk.download('vader_lexicon')
 
 post['Sentiment'] = post['Comment'].progress_apply(lambda x: sentiment_scores(x))
 
