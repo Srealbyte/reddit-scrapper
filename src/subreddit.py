@@ -11,10 +11,10 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 nltk.download('vader_lexicon')
 
 user_agent="agent01"
-reddit = praw.Reddit(username="No-Professional-8030",
-                     password="Tutorial01",
-                     client_id="2MS-Ef8sTpSYzdbqEpIxAg",
-                     client_secret="Cnht4sjg8xG0EZTaPI8Yk0Kn3zGKqw",
+reddit = praw.Reddit(username=
+                     password=
+                     client_id=
+                     client_secret=
                      user_agent=user_agent
 )
 subreddit_name="buildapcsales"
